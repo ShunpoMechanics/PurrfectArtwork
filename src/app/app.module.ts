@@ -12,6 +12,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { ArtworkComponent } from './artwork/artwork.component';
 import { ArtworkCardComponent } from './artwork-card/artwork-card.component';
 import { AuthComponent } from './auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 import { InventoryItemComponent } from './inventory-item/inventory-item.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { InventoryItemComponent } from './inventory-item/inventory-item.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],

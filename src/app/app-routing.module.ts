@@ -7,6 +7,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ArtworkComponent } from './artwork/artwork.component';
 import { AuthComponent } from './auth/auth.component';
 import { InventoryItemComponent } from './inventory-item/inventory-item.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 const routes: Routes = [
 {  path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
 {  path: 'about-us', component: AboutUsComponent},
 {  path: 'artwork', component: ArtworkComponent},
 {  path: 'auth', component: AuthComponent},
-{  path: 'inventory', component: InventoryItemComponent}
+{  path: 'inventory', component: InventoryItemComponent},
+{  path: 'gallery', component: GalleryComponent}
 ];
 
 @NgModule({
