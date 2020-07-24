@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -11,6 +11,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ArtworkComponent } from './artwork/artwork.component';
 import { ArtworkCardComponent } from './artwork-card/artwork-card.component';
+import { AuthComponent } from './auth/auth.component';
+import { InventoryItemComponent } from './inventory-item/inventory-item.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,14 @@ import { ArtworkCardComponent } from './artwork-card/artwork-card.component';
     AboutUsComponent,
     GalleryComponent,
     ArtworkComponent,
-    ArtworkCardComponent
+    ArtworkCardComponent,
+    AuthComponent,
+    InventoryItemComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
