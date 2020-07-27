@@ -3,7 +3,9 @@
   <a routerLink="auth" *ngIf="!isAuthenticated">Login</a>
   <a routerLink="account" *ngIf="isAuthenticated">Profile</a>
   <a routerLink="account" style="display: none;">Account</a>
-  <a routerLink="inventory" routerLink="inventory">Create Inventory</a>
+  <a routerLink="inventory" *ngIf="isAdmin" routerLink="inventory"
+    >Create Inventory</a
+  >
   <a (click)="displayArtwork()">Browse Artwork</a>
   <a
     id="paintings-link"

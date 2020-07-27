@@ -1,33 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
+import { NgForm } from "@angular/forms";
+import { DataManagementService } from "../shared/data-management/data-management.service";
 
 @Component({
-  selector: 'app-inventory-item',
-  templateUrl: './inventory-item.component.html',
-  styleUrls: ['./inventory-item.component.css']
+  selector: "app-inventory-item",
+  templateUrl: "./inventory-item.component.html",
+  styleUrls: ["./inventory-item.component.css"],
 })
 export class InventoryItemComponent implements OnInit {
   loadedInventory = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private data: DataManagementService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  onSubmit(form: NgForm) { 
-    this.onCreateInventory(form.value);
+  onSubmit(form: NgForm) {
+    this.data.onCreateInventory(form.value);
     form.reset();
   }
-
-  onCreateInventory(postData: { name: string; description: string; price: number }) {
-    this.http.post(
-      environment.firebaseAPI + 'posts.json'
-      , postData
-    ).subscribe(responseData => {
-      console.log(responseData);
-    });
-  }
-
 }

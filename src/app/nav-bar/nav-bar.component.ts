@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { AuthService } from "../auth/auth.service";
 import { Subscription } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-nav-bar",
@@ -9,6 +10,7 @@ import { Subscription } from "rxjs";
 })
 export class NavBarComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
+  isAdmin = false;
   private userSub: Subscription;
 
   constructor(private authService: AuthService) {}
@@ -16,6 +18,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
+      if (user.id == environment.adminUserId) this.isAdmin = true;
     });
   }
 

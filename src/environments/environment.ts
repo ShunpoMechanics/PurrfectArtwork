@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  firebaseAPI: 'https://purrfectartwork.firebaseio.com/',
-  APIKey: 'AIzaSyAyM314WPy2gPfdwds-OTePE9crQIhoyT8',
+  firebaseAPI: "https://purrfectartwork.firebaseio.com/",
+  APIKey: "AIzaSyAyM314WPy2gPfdwds-OTePE9crQIhoyT8",
+  adminUserId: "jJNTYnd6k3fAdrAF52QRfNRhVHe2",
 };
 
 /*
