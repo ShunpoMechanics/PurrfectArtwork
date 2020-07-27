@@ -20,5 +20,11 @@ export class DataManagementService {
       });
   }
 
-  getInventory() {}
+  getInventory() {
+    this.http.get(environment.firebaseAPI + "posts.json").subscribe((posts) => {
+      console.log(posts);
+    });
+  }
+
+  markItemSold() {}
 }

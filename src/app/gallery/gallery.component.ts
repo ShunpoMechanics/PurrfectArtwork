@@ -1,27 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { environment } from 'src/environments/environment';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
+import { DataManagementService } from "../shared/data-management/data-management.service";
 
 @Component({
-  selector: 'app-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.css']
+  selector: "app-gallery",
+  templateUrl: "./gallery.component.html",
+  styleUrls: ["./gallery.component.css"],
 })
 export class GalleryComponent implements OnInit {
   loadedPieces = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private data: DataManagementService) {}
 
   ngOnInit() {
     this.fetchPieces();
   }
 
-  private fetchPieces ()
-  {
-    this.http.get(environment.firebaseAPI + 'posts.json').subscribe(posts => {
-      console.log(posts);
-    });
+  private fetchPieces() {
+    this.data.getInventory();
   }
-
-
 }
