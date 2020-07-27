@@ -1,29 +1,35 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import { AuthService } from "src/app/auth/auth.service";
+import { take, exhaustMap } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class DataManagementService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   onCreateInventory(postData: {
     name: string;
     description: string;
     price: number;
   }) {
-    this.http
-      .post(environment.firebaseAPI + "posts.json", postData)
-      .subscribe((responseData) => {
-        console.log(responseData);
-      });
+    this.authService.user.pipe(take(1)).subscribe();
+    return this.http.post(environment.firebaseAPI + "posts.json", postData); //rename posts to inventory
   }
 
   getInventory() {
-    this.http.get(environment.firebaseAPI + "posts.json").subscribe((posts) => {
-      console.log(posts);
-    });
+    return this.http.get(environment.firebaseAPI + "posts.json");
+    // The below code requires you to be logged in to retrieve data, could be useful elsewhere
+    // return this.authService.user.pipe(
+    //   take(1),
+    //   exhaustMap((user) => {
+    //     return this.http.get(environment.firebaseAPI + "posts.json?auth=", {
+    //       params: new HttpParams().set("auth", user.token),
+    //     });
+    //   })
+    // );
   }
 
   markItemSold() {}

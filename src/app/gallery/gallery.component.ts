@@ -18,6 +18,8 @@ export class GalleryComponent implements OnInit {
   }
 
   private fetchPieces() {
-    this.data.getInventory();
+    this.data.getInventory().subscribe((posts) => {
+      console.log(posts);
+    });
   }
 }
