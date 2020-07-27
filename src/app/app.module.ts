@@ -14,6 +14,7 @@ import { ArtworkCardComponent } from './artwork-card/artwork-card.component';
 import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InventoryItemComponent } from './inventory-item/inventory-item.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { InventoryItemComponent } from './inventory-item/inventory-item.componen
     ArtworkComponent,
     ArtworkCardComponent,
     AuthComponent,
-    InventoryItemComponent
+    InventoryItemComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
