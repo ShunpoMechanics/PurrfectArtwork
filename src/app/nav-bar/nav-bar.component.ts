@@ -1,31 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { AuthService } from "../auth/auth.service";
+import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  selector: "app-nav-bar",
+  templateUrl: "./nav-bar.component.html",
+  styleUrls: ["./nav-bar.component.css"],
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, OnDestroy {
+  isAuthenticated = false;
+  private userSub: Subscription;
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isAuthenticated = !!user;
+    });
   }
 
-displayArtwork() {
-  var x = document.getElementById("paintings-link");
-  this.toggle(x);
-  x = document.getElementById("geodes-link");
-  this.toggle(x);
-  x = document.getElementById("etc-link");
-  this.toggle(x);
-}
-
-toggle(x) {
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
-}
+
+  displayArtwork() {
+    var x = document.getElementById("paintings-link");
+    this.toggle(x);
+    x = document.getElementById("geodes-link");
+    this.toggle(x);
+    x = document.getElementById("etc-link");
+    this.toggle(x);
+  }
+
+  toggle(x) {
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
 }
