@@ -42,4 +42,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
       x.style.display = "none";
     }
   }
+
+  onLogout() {
+    this.authService.logout();
+  }
 }

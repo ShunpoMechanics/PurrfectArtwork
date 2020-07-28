@@ -15,21 +15,12 @@ export class DataManagementService {
     description: string;
     price: number;
   }) {
-    this.authService.user.pipe(take(1)).subscribe();
+    //this.authService.user.pipe(take(1)).subscribe();
     return this.http.post(environment.firebaseAPI + "posts.json", postData); //rename posts to inventory
   }
 
   getInventory() {
     return this.http.get(environment.firebaseAPI + "posts.json");
-    // The below code requires you to be logged in to retrieve data, could be useful elsewhere
-    // return this.authService.user.pipe(
-    //   take(1),
-    //   exhaustMap((user) => {
-    //     return this.http.get(environment.firebaseAPI + "posts.json?auth=", {
-    //       params: new HttpParams().set("auth", user.token),
-    //     });
-    //   })
-    // );
   }
 
   markItemSold() {}
