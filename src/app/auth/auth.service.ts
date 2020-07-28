@@ -19,6 +19,7 @@ export interface AuthResponseData {
 export class AuthService {
   user = new BehaviorSubject<User>(null);
   private tokenTimer: any;
+  isAdmin = false;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -97,15 +98,17 @@ export class AuthService {
   logout() {
     this.user.next(null);
     this.router.navigate(["/auth"]);
-    localStorage.remoteItem("userData");
+    localStorage.removeItem("userData");
     if (this.tokenTimer) clearTimeout(this.tokenTimer);
     this.tokenTimer = null;
+    this.isAdmin = false;
   }
 
   autoLogout(expirationDuration: number) {
     this.tokenTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
+    this.isAdmin = false;
   }
 
   private handleAuthentication(

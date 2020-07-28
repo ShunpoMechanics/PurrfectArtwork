@@ -25,7 +25,10 @@
   >
   <a routerLink="comissions-form">Comissions</a>
   <a routerLink="about-us">About Us</a>
-  <a *ngIf="isAuthenticated" style="cursor: pointer;" (click)="onLogout()"
+  <a
+    *ngIf="isAuthenticated"
+    style="cursor: pointer;"
+    (click)="onLogout(); isAdmin = false"
     >Logout</a
   >
 </div>
