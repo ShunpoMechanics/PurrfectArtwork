@@ -1,9 +1,69 @@
 <div class="container">
   <div class="row">
+    <div class="col-lg-3" *ngFor="let painting of paintings">
+      <div class="card">
+        <div class="card-img-top">
+          <img src="{{ painting.imagePath }}" class="rounded img-fluid" />
+        </div>
+        <div class="card-body">
+          <p>{{ painting.name }}</p>
+          <p>{{ painting.description }}</p>
+          <p>{{ painting.price }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col-lg-3">
+    <div class="card">
+      <div class="card-img-top">
+        <img
+          src="../../assets/paintings/Claire Redfield Avatar.jpg"
+          class="rounded img-fluid"
+        />
+      </div>
+      <div class="card-body">
+        <p>This painting is blah blah</p>
+        <p>Price</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="card">
+      <div class="card-img-top">
+        <img
+          src="../../assets/paintings/Claire Redfield Avatar.jpg"
+          class="rounded img-fluid"
+        />
+      </div>
+      <div class="card-body">
+        <p>This painting is blah blah</p>
+        <p>Price</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="card">
+      <div class="card-img-top">
+        <img
+          src="../../assets/paintings/Claire Redfield Avatar.jpg"
+          class="rounded img-fluid"
+        />
+      </div>
+      <div class="card-body">
+        <p>This painting is blah blah</p>
+        <p>Price</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-lg-3">
       <div class="card">
         <div class="card-img-top">
-          <img src="../../assets/paintings/Claire Redfield Avatar.jpg" class="rounded img-fluid">
+          <img
+            src="../../assets/paintings/Claire Redfield Avatar.jpg"
+            class="rounded img-fluid"
+          />
         </div>
         <div class="card-body">
           <p>This painting is blah blah</p>
@@ -14,7 +74,10 @@
     <div class="col-lg-3">
       <div class="card">
         <div class="card-img-top">
-          <img src="../../assets/paintings/Claire Redfield Avatar.jpg" class="rounded img-fluid">
+          <img
+            src="../../assets/paintings/Claire Redfield Avatar.jpg"
+            class="rounded img-fluid"
+          />
         </div>
         <div class="card-body">
           <p>This painting is blah blah</p>
@@ -25,7 +88,10 @@
     <div class="col-lg-3">
       <div class="card">
         <div class="card-img-top">
-          <img src="../../assets/paintings/Claire Redfield Avatar.jpg" class="rounded img-fluid">
+          <img
+            src="../../assets/paintings/Claire Redfield Avatar.jpg"
+            class="rounded img-fluid"
+          />
         </div>
         <div class="card-body">
           <p>This painting is blah blah</p>
@@ -36,7 +102,10 @@
     <div class="col-lg-3">
       <div class="card">
         <div class="card-img-top">
-          <img src="../../assets/paintings/Claire Redfield Avatar.jpg" class="rounded img-fluid">
+          <img
+            src="../../assets/paintings/Claire Redfield Avatar.jpg"
+            class="rounded img-fluid"
+          />
         </div>
         <div class="card-body">
           <p>This painting is blah blah</p>
@@ -45,49 +114,5 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="card">
-        <div class="card-img-top">
-          <img src="../../assets/paintings/Claire Redfield Avatar.jpg" class="rounded img-fluid">
-        </div>
-        <div class="card-body">
-          <p>This painting is blah blah</p>
-          <p>Price</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="card">
-        <div class="card-img-top">
-          <img src="../../assets/paintings/Claire Redfield Avatar.jpg" class="rounded img-fluid">
-        </div>
-        <div class="card-body">
-          <p>This painting is blah blah</p>
-          <p>Price</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="card">
-        <div class="card-img-top">
-          <img src="../../assets/paintings/Claire Redfield Avatar.jpg" class="rounded img-fluid">
-        </div>
-        <div class="card-body">
-          <p>This painting is blah blah</p>
-          <p>Price</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="card">
-        <div class="card-img-top">
-          <img src="../../assets/paintings/Claire Redfield Avatar.jpg" class="rounded img-fluid">
-        </div>
-        <div class="card-body">
-          <p>This painting is blah blah</p>
-          <p>Price</p>
-        </div>
-      </div>
-    </div>
+</div> -->
 </div>
