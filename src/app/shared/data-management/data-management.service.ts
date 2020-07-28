@@ -15,7 +15,6 @@ export class DataManagementService {
     description: string;
     price: number;
   }) {
-    //this.authService.user.pipe(take(1)).subscribe();
     return this.http.post(environment.firebaseAPI + "posts.json", postData); //rename posts to inventory
   }
 
