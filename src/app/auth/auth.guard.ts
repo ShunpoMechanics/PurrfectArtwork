@@ -26,7 +26,6 @@ export class AuthGuard implements CanActivate {
     return this.authService.user.pipe(
       take(1),
       map((user) => {
-        console.log(route.routeConfig.path);
         if (user && user.id == environment.adminUserId) this.isAdmin = true;
         const isUser = !!user;
         if (this.isAdmin || (isUser && route.routeConfig.path != "inventory"))

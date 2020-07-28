@@ -16,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { InventoryItemComponent } from "./inventory-item/inventory-item.component";
 import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner";
 import { AuthInterceptor } from "./auth/authInterceptor.service";
+
 @NgModule({
   declarations: [
     AppComponent,
