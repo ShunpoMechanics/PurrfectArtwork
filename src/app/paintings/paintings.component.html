@@ -1,4 +1,6 @@
 <div class="container">
+  <!-- Search bar -->
+  <!-- Filter dropdown -->
   <div class="row">
     <div class="col-lg-3" *ngFor="let painting of paintings">
       <div class="card">
@@ -8,13 +10,14 @@
         <div class="card-body">
           <p>{{ painting.name }}</p>
           <p>{{ painting.description }}</p>
+          <p>{{ painting.type }}</p>
           <p>{{ painting.price }}</p>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- <div class="col-lg-3">
+</div>
+<!-- <div class="col-lg-3">
     <div class="card">
       <div class="card-img-top">
         <img
@@ -115,4 +118,4 @@
     </div>
   </div>
 </div> -->
-</div>
+<!-- </div> -->

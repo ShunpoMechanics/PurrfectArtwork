@@ -6,15 +6,15 @@
   <a routerLink="inventory" *ngIf="isAdmin" routerLink="inventory"
     >Create Inventory</a
   >
-  <a (click)="displayArtwork()">Browse Artwork</a>
-  <a
+  <a (click)="displayArtwork()" routerLink="paintings">Browse Artwork</a>
+  <!-- <a
     id="paintings-link"
     style="display: none; text-indent: 25px;"
     routerLink="paintings"
     >Paintings</a
-  >
+  > -->
   <!-- <a id="paintings-link" style="display: none;text-indent: 25px;" routerLink="artwork">Paintings</a> -->
-  <a
+  <!-- <a
     id="geodes-link"
     style="display: none; text-indent: 25px;"
     routerLink="geodes"
@@ -22,7 +22,7 @@
   >
   <a id="etc-link" style="display: none; text-indent: 25px;"
     >Idk some other weird shit</a
-  >
+  > -->
   <a routerLink="comissions-form">Comissions</a>
   <a routerLink="about-us">About Us</a>
   <a

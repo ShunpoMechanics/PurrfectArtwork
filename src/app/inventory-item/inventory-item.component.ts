@@ -17,7 +17,7 @@ export class InventoryItemComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(form: NgForm) {
-    this.data.onCreateInventory(form.value).subscribe();
+    this.data.onCreateInventory(form.value);
     form.reset();
   }
 }

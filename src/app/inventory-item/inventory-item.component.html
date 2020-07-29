@@ -38,12 +38,27 @@
           minlength="1"
         />
       </div>
-      <input
-        type="file"
-        id="photo"
-        (change)="data.referencePic($event.target.files)"
-        accept=".png, .jpg"
-      />
+      <div class="form group">
+        <label for="type">Type</label>
+        <input
+          type="type"
+          id="type"
+          class="form-control"
+          ngModel
+          name="type"
+          required
+          number
+          minlength="1"
+        />
+      </div>
+      <div class="form group" style="padding-top: 16px;">
+        <input
+          type="file"
+          id="photo"
+          (change)="data.referencePic($event.target.files)"
+          accept=".png, .jpg"
+        />
+      </div>
       <div style="margin-top: 16px;">
         <button
           class="btn btn-primary"

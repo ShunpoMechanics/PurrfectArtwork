@@ -4,6 +4,7 @@ import { environment } from "src/environments/environment";
 import { take, exhaustMap } from "rxjs/operators";
 import * as firebase from "firebase/app";
 import "firebase/storage";
+import "firebase/database";
 
 @Injectable({
   providedIn: "root",
@@ -24,20 +25,33 @@ export class DataManagementService {
     firebase.initializeApp(firebaseConfig);
   }
 
-  downloadUrl;
+  downloadUrl: string;
   upload: File = null;
   onCreateInventory(postData: {
     name: string;
     description: string;
     price: number;
+    type: string;
     imagePath: string;
   }) {
-    this.uploadImage(this.upload);
-    return this.http.post(environment.firebaseAPI + "posts.json", postData); //rename posts to inventory
+    this.uploadImage(this.upload).then((log) =>
+      firebase
+        .database()
+        .ref("inventory/" + postData.name)
+        .set({
+          name: postData.name,
+          description: postData.description,
+          price: postData.price,
+          imagePath: this.downloadUrl,
+          type: postData.type,
+        })
+    );
+
+    // return this.http.post(environment.firebaseAPI + "posts.json", postData); //rename posts to inventory
   }
 
   getInventory() {
-    return this.http.get(environment.firebaseAPI + "posts.json");
+    return this.http.get(environment.firebaseAPI + "inventory.json");
   }
 
   markItemSold() {}
@@ -46,7 +60,7 @@ export class DataManagementService {
     this.upload = files.item(0);
   }
 
-  uploadImage(file: File) {
+  async uploadImage(file: File) {
     var ref = firebase.storage().ref();
 
     var metadata = {
@@ -57,7 +71,7 @@ export class DataManagementService {
       .child("images/" + this.upload.name)
       .put(file, metadata);
 
-    uploadTask
+    await uploadTask
       .then((snapshot) => snapshot.ref.getDownloadURL())
       .then((url) => {
         this.downloadUrl = url;
