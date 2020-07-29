@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { AuthService } from "src/app/auth/auth.service";
-import { take, exhaustMap } from "rxjs/operators";
+import { take, exhaustMap, takeLast } from "rxjs/operators";
 import { Observable } from "rxjs";
 import * as firebase from "firebase/app";
 import "firebase/storage";
@@ -26,13 +26,13 @@ export class DataManagementService {
     firebase.initializeApp(firebaseConfig);
   }
 
-  downloadUrl: Observable<string>;
+  downloadUrl;
   upload: File = null;
   onCreateInventory(postData: {
     name: string;
     description: string;
     price: number;
-    file: File;
+    imagePath: string;
   }) {
     this.uploadImage(this.upload);
     return this.http.post(environment.firebaseAPI + "posts.json", postData); //rename posts to inventory
@@ -58,5 +58,11 @@ export class DataManagementService {
     var uploadTask = ref
       .child("images/" + this.upload.name)
       .put(file, metadata);
+
+    uploadTask
+      .then((snapshot) => snapshot.ref.getDownloadURL())
+      .then((url) => {
+        this.downloadUrl = url;
+      });
   }
 }
