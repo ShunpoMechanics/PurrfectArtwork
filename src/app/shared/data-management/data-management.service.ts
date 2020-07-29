@@ -68,7 +68,7 @@ export class DataManagementService {
     };
 
     var uploadTask = ref
-      .child("images/" + this.upload.name)
+      .child("images/" + this.upload.name + " " + new Date())
       .put(file, metadata);
 
     await uploadTask

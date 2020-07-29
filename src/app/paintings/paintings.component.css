@@ -1,16 +1,27 @@
 .gallery-image {
-    width: 100%;
+  width: 100%;
 }
 
 .img-thumbail {
-    border: 2px solid black;
-    border-radius: 3%;
+  border: 2px solid black;
+  border-radius: 3%;
 }
 
 .card {
-    width: 100%;
+  width: 100%;
+  margin-bottom: 16px;
 }
 
-.card {
-    margin-bottom: 16px;
+.card-img-top img {
+  /* width: 100%; */
+  width: 245.5px; /* resize image to the same size */
+  height: 327.33px;
+}
+
+.card-body {
+  height: 200px;
+}
+
+.card p {
+  height: 20%;
 }
