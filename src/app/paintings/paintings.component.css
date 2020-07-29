@@ -19,9 +19,13 @@
 }
 
 .card-body {
-  height: 200px;
+  height: 175px;
 }
 
 .card p {
   height: 20%;
+}
+
+.h6 {
+  display: "";
 }

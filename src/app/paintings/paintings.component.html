@@ -1,22 +1,30 @@
-<div class="container">
-  <!-- Search bar -->
-  <!-- Filter dropdown -->
-  <div class="row">
-    <div class="col-lg-3" *ngFor="let painting of paintings">
-      <div class="card">
-        <div class="card-img-top">
-          <img src="{{ painting.imagePath }}" class="rounded img-fluid" />
-        </div>
-        <div class="card-body">
-          <p>{{ painting.name }}</p>
-          <p>{{ painting.description }}</p>
-          <p>{{ painting.type }}</p>
-          <p>{{ painting.price }}</p>
+<body>
+  <div class="container">
+    <input
+      type="text"
+      style="margin-bottom: 16px;"
+      (keyup)="filterList()"
+      placeholder="Search this list for..."
+      id="search"
+    />
+    <!-- Filter dropdown -->
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let painting of paintings">
+        <div class="card">
+          <div class="card-img-top">
+            <img src="{{ painting.imagePath }}" class="rounded img-fluid" />
+          </div>
+          <div class="card-body">
+            <h6>{{ painting.name }}</h6>
+            <h6>{{ painting.description }}</h6>
+            <h6>{{ painting.type }}</h6>
+            <h6>{{ painting.price }}</h6>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</body>
 <!-- <div class="col-lg-3">
     <div class="card">
       <div class="card-img-top">

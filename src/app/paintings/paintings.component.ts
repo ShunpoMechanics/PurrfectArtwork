@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { DataManagementService } from "../shared/data-management/data-management.service";
 import { Painting } from "./paintings.model";
-import { map } from "rxjs/operators";
+import { map, filter } from "rxjs/operators";
+import { element } from "@angular/core/src/render3";
 
 @Component({
   selector: "app-paintings",
@@ -10,6 +11,8 @@ import { map } from "rxjs/operators";
 })
 export class PaintingsComponent implements OnInit {
   paintings: Painting[];
+  backupPaintings: Painting[];
+  filteredPaintings: Painting[];
   constructor(private data: DataManagementService) {}
 
   ngOnInit() {
@@ -31,6 +34,24 @@ export class PaintingsComponent implements OnInit {
       )
       .subscribe((paintings) => {
         this.paintings = paintings;
+        this.backupPaintings = paintings;
       });
+  }
+
+  filterList() {
+    var input = (<HTMLInputElement>(
+      document.getElementById("search")
+    )).value.toLowerCase();
+    this.filteredPaintings = [];
+    for (let painting of this.backupPaintings) {
+      if (
+        painting.name.toLowerCase().includes(input) ||
+        painting.description.toLowerCase().includes(input) ||
+        painting.type.toLowerCase().includes(input)
+      ) {
+        this.filteredPaintings.push(painting);
+      }
+    }
+    this.paintings = this.filteredPaintings;
   }
 }
