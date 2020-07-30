@@ -14,6 +14,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { InventoryItemComponent } from "./inventory-item/inventory-item.component";
 import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner";
 import { AuthInterceptor } from "./auth/authInterceptor.service";
+import { ComissionsComponent } from './comissions/comissions.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AuthInterceptor } from "./auth/authInterceptor.service";
     AuthComponent,
     InventoryItemComponent,
     LoadingSpinnerComponent,
+    ComissionsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

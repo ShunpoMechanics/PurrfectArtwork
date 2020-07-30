@@ -8,6 +8,7 @@ import { ArtworkComponent } from "./artwork/artwork.component";
 import { AuthComponent } from "./auth/auth.component";
 import { InventoryItemComponent } from "./inventory-item/inventory-item.component";
 import { AuthGuard } from "./auth/auth.guard";
+import { ComissionsComponent } from './comissions/comissions.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "about-us", component: AboutUsComponent },
   { path: "artwork", component: ArtworkComponent },
   { path: "auth", component: AuthComponent },
+  {path: "comissions-form", component: ComissionsComponent},
   {
     path: "inventory",
     component: InventoryItemComponent,
