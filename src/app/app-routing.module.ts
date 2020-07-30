@@ -7,7 +7,6 @@ import { AboutUsComponent } from "./about-us/about-us.component";
 import { ArtworkComponent } from "./artwork/artwork.component";
 import { AuthComponent } from "./auth/auth.component";
 import { InventoryItemComponent } from "./inventory-item/inventory-item.component";
-import { GalleryComponent } from "./gallery/gallery.component";
 import { AuthGuard } from "./auth/auth.guard";
 
 const routes: Routes = [
@@ -22,7 +21,6 @@ const routes: Routes = [
     component: InventoryItemComponent,
     canActivate: [AuthGuard],
   },
-  { path: "gallery", component: GalleryComponent },
 ];
 
 @NgModule({

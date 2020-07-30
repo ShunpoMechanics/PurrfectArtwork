@@ -16,6 +16,10 @@ export class InventoryItemComponent implements OnInit {
 
   ngOnInit() {}
 
+  referencePic (pic) {
+    this.data.referencePic(pic);
+  }
+
   onSubmit(form: NgForm) {
     this.data.onCreateInventory(form.value);
     form.reset();
