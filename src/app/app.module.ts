@@ -15,6 +15,7 @@ import { InventoryItemComponent } from "./inventory-item/inventory-item.componen
 import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner";
 import { AuthInterceptor } from "./auth/authInterceptor.service";
 import { ComissionsComponent } from './comissions/comissions.component';
+import { ArtpieceComponent } from './artpiece/artpiece.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ComissionsComponent } from './comissions/comissions.component';
     InventoryItemComponent,
     LoadingSpinnerComponent,
     ComissionsComponent,
+    ArtpieceComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

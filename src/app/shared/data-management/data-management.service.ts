@@ -25,28 +25,39 @@ export class DataManagementService {
     firebase.initializeApp(firebaseConfig);
   }
 
-  downloadUrl: string;
-  upload: File = null;
+  isLoading = false;
+  downloadUrls: string[] = ["", "", "", "", ""];
+  upload: FileList = null;
+  id: number;
+
   onCreateInventory(postData: {
     name: string;
     description: string;
     price: number;
     type: string;
-    imagePath: string;
+    imagePaths: string;
   }) {
+    //Add a way to make unique identifiers so that I can add a table to relate images and inventory
+    this.id = Math.floor(Math.random() * 1000) + 1;
+    this.isLoading = true;
     this.uploadImage(this.upload).then((log) =>
       firebase
         .database()
-        .ref("inventory/" + postData.name)
+        .ref("inventory/" + this.id)
         .set({
+          id: this.id,
           name: postData.name,
           description: postData.description,
           price: postData.price,
-          imagePath: this.downloadUrl,
           type: postData.type,
+          imagePath1: this.downloadUrls[0],
+          imagePath2: this.downloadUrls[1],
+          imagePath3: this.downloadUrls[2],
+          imagePath4: this.downloadUrls[3],
+          imagePath5: this.downloadUrls[4],
         })
     );
-
+    this.isLoading = false;
     // return this.http.post(environment.firebaseAPI + "posts.json", postData); //rename posts to inventory
   }
 
@@ -57,24 +68,26 @@ export class DataManagementService {
   markItemSold() {}
 
   referencePic(files: FileList) {
-    this.upload = files.item(0);
+    this.upload = files;
   }
 
-  async uploadImage(file: File) {
-    var ref = firebase.storage().ref();
+  async uploadImage(files: FileList) {
+    var storRef = firebase.storage().ref();
 
     var metadata = {
       contentType: "image/jpeg",
     };
 
-    var uploadTask = ref
-      .child("images/" + this.upload.name + " " + new Date())
-      .put(file, metadata);
+    for (var i = 0; i < files.length; i++) {
+      var uploadTask = storRef
+        .child("images/" + this.upload[i].name + " " + new Date())
+        .put(files[i], metadata);
 
-    await uploadTask
-      .then((snapshot) => snapshot.ref.getDownloadURL())
-      .then((url) => {
-        this.downloadUrl = url;
-      });
+      await uploadTask
+        .then((snapshot) => snapshot.ref.getDownloadURL())
+        .then((url) => {
+          this.downloadUrls[i] = url;
+        });
+    }
   }
 }

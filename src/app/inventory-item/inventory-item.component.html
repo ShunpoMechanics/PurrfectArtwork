@@ -1,5 +1,8 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
     <form #inventoryForm="ngForm" (ngSubmit)="onSubmit(inventoryForm)">
       <div class="form group">
         <label for="art">Item Name</label>
@@ -56,6 +59,7 @@
           type="file"
           id="photo"
           (change)="referencePic($event.target.files)"
+          multiple
           accept=".png, .jpg"
         />
       </div>
@@ -69,5 +73,6 @@
         </button>
       </div>
     </form>
+    <img *ngFor="let url of urls" [src]="url" />
   </div>
 </div>

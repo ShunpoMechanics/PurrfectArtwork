@@ -25,9 +25,9 @@ export class PaintingsComponent implements OnInit {
       .pipe(
         map((resData) => {
           const paintingArr = [];
-          for (const key in resData) {
-            if (resData.hasOwnProperty(key))
-              paintingArr.push({ ...resData[key], id: key });
+          for (const id in resData) {
+            if (resData.hasOwnProperty(id))
+              paintingArr.push({ ...resData[id], id: id });
           }
           return paintingArr;
         })

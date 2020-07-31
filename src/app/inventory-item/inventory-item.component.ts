@@ -10,13 +10,13 @@ import { DataManagementService } from "../shared/data-management/data-management
   styleUrls: ["./inventory-item.component.css"],
 })
 export class InventoryItemComponent implements OnInit {
-  loadedInventory = [];
-
+  files: FileList;
   constructor(private data: DataManagementService) {}
 
   ngOnInit() {}
 
-  referencePic (pic) {
+  referencePic(pic) {
+    this.files = pic;
     this.data.referencePic(pic);
   }
 
