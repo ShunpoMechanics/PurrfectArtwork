@@ -11,5 +11,5 @@ export class ComissionsComponent implements OnInit {
 
   ngOnInit() {}
 
-  referencePic() {}
+  referencePic(event) {}
 }
