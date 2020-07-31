@@ -1,78 +1,87 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
     <div *ngIf="isLoading" style="text-align: center;">
+      <h4>The inventory item is being created please wait</h4>
       <app-loading-spinner></app-loading-spinner>
     </div>
-    <form #inventoryForm="ngForm" (ngSubmit)="onSubmit(inventoryForm)">
-      <div class="form group">
-        <label for="art">Item Name</label>
-        <input
-          type="art"
-          id="art"
-          class="form-control"
-          ngModel
-          name="name"
-          required
-          minlength="1"
-        />
+    <div *ngIf="!isLoading">
+      <div class="alert alert-danger" *ngIf="error">
+        <p>An error has occurred, please try again later</p>
       </div>
-      <div class="form group">
-        <label for="description">Description</label>
-        <input
-          type="description"
-          id="description"
-          class="form-control"
-          ngModel
-          name="description"
-          required
-          minlength="1"
-        />
+      <div class="alert alert-success" *ngIf="!error && hasTried">
+        <p>Inventory Item successfully created!</p>
       </div>
-      <div class="form group">
-        <label for="price">Price</label>
-        <input
-          type="price"
-          id="price"
-          class="form-control"
-          ngModel
-          name="price"
-          required
-          number
-          minlength="1"
-        />
-      </div>
-      <div class="form group">
-        <label for="type">Type</label>
-        <input
-          type="type"
-          id="type"
-          class="form-control"
-          ngModel
-          name="type"
-          required
-          number
-          minlength="1"
-        />
-      </div>
-      <div class="form group" style="padding-top: 16px;">
-        <input
-          type="file"
-          id="photo"
-          (change)="referencePic($event.target.files)"
-          multiple
-          accept=".png, .jpg"
-        />
-      </div>
-      <div style="margin-top: 16px;">
-        <button
-          class="btn btn-primary"
-          type="submit"
-          [disabled]="!inventoryForm.valid"
-        >
-          Submit Inventory Item
-        </button>
-      </div>
-    </form>
+      <form #inventoryForm="ngForm" (ngSubmit)="onSubmit(inventoryForm)">
+        <div class="form group">
+          <label for="art">Item Name</label>
+          <input
+            type="art"
+            id="art"
+            class="form-control"
+            ngModel
+            name="name"
+            required
+            minlength="1"
+          />
+        </div>
+        <div class="form group">
+          <label for="description">Description</label>
+          <input
+            type="description"
+            id="description"
+            class="form-control"
+            ngModel
+            name="description"
+            required
+            minlength="1"
+          />
+        </div>
+        <div class="form group">
+          <label for="price">Price</label>
+          <input
+            type="price"
+            id="price"
+            class="form-control"
+            ngModel
+            name="price"
+            required
+            number
+            minlength="1"
+          />
+        </div>
+        <div class="form group">
+          <label for="type">Type</label>
+          <input
+            type="type"
+            id="type"
+            class="form-control"
+            ngModel
+            name="type"
+            required
+            number
+            minlength="1"
+          />
+        </div>
+        <div class="form group" style="padding-top: 16px;">
+          <input
+            type="file"
+            id="photo"
+            (change)="referencePic($event.target.files)"
+            multiple
+            accept=".png, .jpg"
+          />
+        </div>
+        <div style="margin-top: 16px;">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!inventoryForm.valid"
+          >
+            Submit Inventory Item
+          </button>
+        </div>
+      </form>
+    </div>
     <img *ngFor="let url of urls" [src]="url" />
   </div>
 </div>

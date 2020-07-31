@@ -25,12 +25,11 @@ export class DataManagementService {
     firebase.initializeApp(firebaseConfig);
   }
 
-  isLoading = false;
   downloadUrls: string[] = ["", "", "", "", ""];
   upload: FileList = null;
   id: number;
-
-  onCreateInventory(postData: {
+  errorMessage: string = null;
+  async onCreateInventory(postData: {
     name: string;
     description: string;
     price: number;
@@ -39,8 +38,7 @@ export class DataManagementService {
   }) {
     //Add a way to make unique identifiers so that I can add a table to relate images and inventory
     this.id = Math.floor(Math.random() * 1000) + 1;
-    this.isLoading = true;
-    this.uploadImage(this.upload).then((log) =>
+    await this.uploadImage(this.upload).then((log) =>
       firebase
         .database()
         .ref("inventory/" + this.id)
@@ -57,8 +55,12 @@ export class DataManagementService {
           imagePath5: this.downloadUrls[4],
         })
     );
-    this.isLoading = false;
-    // return this.http.post(environment.firebaseAPI + "posts.json", postData); //rename posts to inventory
+    //   .catch((error) => {
+    //     if (this.errorMessage == null)
+    //       this.errorMessage =
+    //         "Something has gone wrong with the inventory creation";
+    //   });
+    // // return this.http.post(environment.firebaseAPI + "posts.json", postData); //rename posts to inventory
   }
 
   getInventory() {
@@ -88,6 +90,9 @@ export class DataManagementService {
         .then((url) => {
           this.downloadUrls[i] = url;
         });
+      // .catch((error) => {
+      //   this.errorMessage = "There was an error uploading image #" + i;
+      // });
     }
   }
 }

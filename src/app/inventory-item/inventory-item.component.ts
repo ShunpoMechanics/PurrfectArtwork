@@ -11,6 +11,9 @@ import { DataManagementService } from "../shared/data-management/data-management
 })
 export class InventoryItemComponent implements OnInit {
   files: FileList;
+  isLoading = false;
+  error = false;
+  hasTried = false;
   constructor(private data: DataManagementService) {}
 
   ngOnInit() {}
@@ -20,8 +23,13 @@ export class InventoryItemComponent implements OnInit {
     this.data.referencePic(pic);
   }
 
-  onSubmit(form: NgForm) {
-    this.data.onCreateInventory(form.value);
+  async onSubmit(form: NgForm) {
+    this.isLoading = true;
+    await this.data.onCreateInventory(form.value).catch((error) => {
+      this.error = true;
+    });
+    this.hasTried = true;
     form.reset();
+    this.isLoading = false;
   }
 }
